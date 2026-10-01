@@ -1,0 +1,15 @@
+# REGISTERS this controller: core-provider pulls the chart and serves it as a composition. Installing
+# one creates its RestDefinitions, and oasgen-provider then generates Pet in petstore.example.io
+# (v1alpha1), each with a <Kind>Configuration that names the credential Secret.
+# Once release 0.1.0 is green, register it from the portal: Controller Builder -> your controllers
+# -> Register; Install then creates a composition of it, which applies the RestDefinitions (portal#275).
+# The same file is attached to https://github.com/krateo-platformops/petstore/releases/tag/0.1.0.
+apiVersion: core.krateo.io/v1alpha1
+kind: CompositionDefinition
+metadata:
+  name: petstore
+  namespace: krateo-system
+spec:
+  chart:
+    url: oci://ghcr.io/krateo-platformops/charts/petstore
+    version: 0.1.0
