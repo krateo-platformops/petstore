@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Krateo API Builder — the petstore controller.",
+  "properties": {
+    "global": {
+      "description": "Set by composition-dynamic-controller on every render (composition name, namespace, kind, ...); not for a deployer to fill in.",
+      "type": "object"
+    }
+  },
+  "title": "petstore",
+  "type": "object"
+}
