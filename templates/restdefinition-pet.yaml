@@ -1,0 +1,36 @@
+apiVersion: ogen.krateo.io/v1alpha1
+kind: RestDefinition
+metadata:
+  name: petstore-pet
+  namespace: '{{ .Release.Namespace }}'
+  annotations:
+    controller.builders.krateo.io/operations: pet
+spec:
+  oasPath: configmap://{{ .Release.Namespace }}/petstore-oas/openapi.json
+  resource:
+    kind: Pet
+    verbsDescription:
+      - action: create
+        method: POST
+        path: /pet
+      - action: get
+        method: GET
+        path: /pet/{petId}
+        fieldMapping:
+          - inCustomResource: spec.id
+            inPath: petId
+      - action: findby
+        method: GET
+        path: /pet/findByStatus
+      - action: update
+        method: PUT
+        path: /pet
+      - action: delete
+        method: DELETE
+        path: /pet/{petId}
+        fieldMapping:
+          - inCustomResource: spec.id
+            inPath: petId
+    identifiers:
+      - id
+  resourceGroup: petstore.example.io
