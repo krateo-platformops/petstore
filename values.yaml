@@ -1,0 +1,3 @@
+# This controller chart ships its RestDefinitions and the OpenAPI document they read.
+# Nothing is parameterised: every manifest is created in the release namespace.
+{}
